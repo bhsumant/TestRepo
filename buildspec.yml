@@ -21,6 +21,7 @@ phases:
     commands:
       - npm install
       - npm ci
+      - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
   #pre_build:
     #commands:
       # - command
