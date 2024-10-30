@@ -1,8 +1,11 @@
+version: 0.2
 phases:
   install:
     runtime-versions:
       nodejs: 14
     commands:
+      # Set COMMIT_INFO variables to send Git specifics to Cypress Cloud when recording
+      # https://docs.cypress.io/guides/continuous-integration/introduction#Git-information
       - npm install
       #- npm ci
       - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
