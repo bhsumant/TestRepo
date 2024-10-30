@@ -18,9 +18,8 @@ phases:
   install:
     runtime-versions:
        nodejs: 14
-      # name: version
-    #commands:
-      # - command
+    commands:
+      - npm install
       # - command
   #pre_build:
     #commands:
