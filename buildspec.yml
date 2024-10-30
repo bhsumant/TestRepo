@@ -1,19 +1,4 @@
 version: 0.2
-  #parameter-store:
-     # key: "value"
-     # key: "value"
-  #secrets-manager:
-     # key: secret-id:json-key:version-stage:version-id
-     # key: secret-id:json-key:version-stage:version-id
-  #exported-variables:
-     # - variable
-     # - variable
-  #git-credential-helper: yes
-#batch:
-  #fast-fail: true
-  #build-list:
-  #build-matrix:
-  #build-graph:
 phases:
   install:
     runtime-versions:
@@ -22,29 +7,17 @@ phases:
       - npm install
       #- npm ci
       - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
-  #pre_build:
-    #commands:
-      # - command
-      # - command
-  build:
-    commands:
-      - ls -lart
-      - echo "Hello world an edit from CC"
-      - ls -lart
-      
-      # - command
-  #post_build:
-    #commands:
-      # - command
-      # - command
-#reports:
-  #report-name-or-arn:
-    #files:
-      # - location
-      # - location
-    #base-directory: location
-    #discard-paths: yes
-    #file-format: JunitXml | CucumberJson
+      - npx cypress cache clear
+      - npm install cypress --save-dev
+      - npm i --save-dev cypress-mochawesome-reporter
+  pre_build:
+    commands:
+      - npx cypress verify
+      - npx cypress info
+  build:
+    commands:
+      - npx cypress run --e2e
+
 artifacts:
   files:
     - "**/*"
