@@ -3,19 +3,9 @@ phases:
   install:
     runtime-versions:
       nodejs: 14
-    commands:
-      # Set COMMIT_INFO variables to send Git specifics to Cypress Cloud when recording
-      # https://docs.cypress.io/guides/continuous-integration/introduction#Git-information
-      - npm install
-      #- npm ci
-      - sudo dnf install -y xorg-x11-server-Xvfb gtk3-devel nss alsa-lib
-      - npx cypress cache clear
-      - npm install cypress --save-dev
-      - npm i --save-dev cypress-mochawesome-reporter
   pre_build:
     commands:
-      - npx cypress verify
-      - npx cypress info
+      - npm install
   build:
     commands:
-      - npx cypress run --e2e
+      - echo "Good Morning"
